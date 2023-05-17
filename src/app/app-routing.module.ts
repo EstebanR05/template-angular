@@ -1,24 +1,20 @@
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { AppLayoutComponent } from "./base/layout/app.layout.component";
+import { AuthGuard } from './shared/guards/auth.guard';
+
+const routes: Routes = [
+    { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+    { path: 'auth', loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) },
+    {
+        path: 'layout',
+        loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule),
+        //canActivate: [AuthGuard]
+    },
+    { path: '**', redirectTo: '/auth/login' },
+];
 
 @NgModule({
-    imports: [
-        RouterModule.forRoot([
-            {
-                path: '', component: AppLayoutComponent,
-                children: [
-                    { path: '', loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardModule) },
-                ]
-            },
-            { path: 'auth', loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule) },
-            { path: '**', redirectTo: '/auth/login' },
-        ], {
-            scrollPositionRestoration: 'enabled',
-            anchorScrolling: 'enabled',
-            onSameUrlNavigation: 'reload'
-        })
-    ],
+    imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
 export class AppRoutingModule {

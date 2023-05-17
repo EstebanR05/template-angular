@@ -1,21 +1,31 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo" routerLink="">
-        <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
-        <span>Natural GroupCol</span>
+        <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg"
+             alt="logo">
+        <span>Template Angular</span>
     </a>
 
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button m-0" (click)="layoutService.onMenuToggle()">
+    <button #menubutton class="p-link layout-menu-button layout-topbar-button m-0"
+            (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
     </button>
 
-    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button"
+            (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-user"></i>
-            <span>Profile</span>
-        </button>
+    <div #topbarmenu class="layout-topbar-menu"
+         [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <div class="dropdown">
+            <button class="btn dropdown-toggle p-link layout-topbar-button" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="pi pi-user"></i>
+                <span>Profile</span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" (click)="logOut()">Cerrar sesión</a></li>
+            </ul>
+        </div>
     </div>
 </div>

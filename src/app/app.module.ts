@@ -10,12 +10,10 @@ import { EventService } from './base/demo/service/event.service';
 import { IconService } from './base/demo/service/icon.service';
 import { NodeService } from './base/demo/service/node.service';
 import { PhotoService } from './base/demo/service/photo.service';
-import { UsersComponent } from './pages/users/users.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        UsersComponent,
     ],
     imports: [
         AppRoutingModule,
