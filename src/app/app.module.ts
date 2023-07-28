@@ -10,7 +10,6 @@ import { EventService } from './base/demo/service/event.service';
 import { IconService } from './base/demo/service/icon.service';
 import { NodeService } from './base/demo/service/node.service';
 import { PhotoService } from './base/demo/service/photo.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -18,8 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     ],
     imports: [
         AppRoutingModule,
-        AppLayoutModule,
-        HttpClientModule,
+        AppLayoutModule
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
