@@ -1,0 +1,63 @@
+<div class="auth-login-page">
+    <div class="auth-login-page_panel"></div>
+    <div class="auth-login-page_content">
+        <img
+            alt="poseidon-layout"
+            id="app-logo"
+            src="/assets/img/logo.jpeg"
+        >
+        <h1>
+            <span>SIGN IN</span>
+            TO SISCONTRI
+        </h1>
+        <p>
+            Bienvenido al sistema contable tributario.
+        </p>
+        <form
+            #userlogin="ngForm"
+            (ngSubmit)="onClickSubmit()"
+        >
+            <div class="auth-login-page_content_input">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-user"></i>
+                    </span>
+                    <input
+                        id="username"
+                        name="username"
+                        type="text"
+                        pInputText
+                        style="width: 100%;"
+                        required="true"
+                        [(ngModel)]="login.username"
+                        placeholder="Usuario"
+                    >
+                </div>
+            </div>
+            <div class="auth-login-page_content_input">
+                <div class="p-inputgroup">
+                    <span class="p-inputgroup-addon">
+                        <i class="pi pi-lock"></i>
+                    </span>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        pPassword
+                        style="width: 100%;"
+                        required="true"
+                        [(ngModel)]="login.password"
+                        placeholder="Contraseña"
+                    >
+                </div>
+            </div>
+            <button
+                label="Iniciar sesión"
+                icon="pi pi-sign-in"
+                type="submit"
+                [disabled]="!userlogin.valid"
+                styleClass="p-button-sm"
+            ></button>
+        </form>
+    </div>
+</div>
